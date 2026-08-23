@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Hub</title>
+    <style>
+        body { background-color: #0d1117; color: #ffffff; font-family: sans-serif; padding: 15px; margin: 0; }
+        h1 { color: #f85149; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-top: 20px; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 10px; }
+        iframe { width: 100%; height: 200px; border: none; border-radius: 6px; }
+        .title { font-size: 14px; margin-top: 8px; color: #c9d1d9; }
+        .msg { text-align: center; color: #8b949e; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <h1>VIDEO HUB</h1>
+    <div id="msg" class="msg">Connecting to Doodstream...</div>
+    <div id="grid" class="grid"></div>
+
+    <script>
+        const API_KEY = "576426pIhliaz78wwydsib";
+        const API_URL = `https://corsproxy.io/?https://doodapi.com/api/file/list?key=${API_KEY}`;
+
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(data => {
+                const msg = document.getElementById("msg");
+                const grid = document.getElementById("grid");
+
+                if (data.status === 200 && data.result.files.length > 0) {
+                    msg.style.display = "none";
+                    data.result.files.forEach(file => {
+                        const card = document.createElement("div");
+                        card.className = "card";
+                        card.innerHTML = `
+                            <iframe src="https://dood.to/e/${file.file_code}" allowfullscreen></iframe>
+                            <div class="title">${file.title}</div>
+                        `;
+                        grid.appendChild(card);
+                    });
+                } else if (data.result.files.length === 0) {
+                    msg.innerText = "Doodstream account lo videos levu. Upload cheyandi!";
+                } else {
+                    msg.innerText = "API Response Error: " + data.msg;
+                }
+            })
+            .catch(err => {
+                document.getElementById("msg").innerText = "Acode Preview lo API Block aindi. Code ni GitHub lo upload chesi Vercel/Netlify lo test cheyandi.";
+            });
+    </script>
+</body>
+</html>
