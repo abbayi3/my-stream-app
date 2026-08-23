@@ -22,10 +22,9 @@
     <div id="video-grid" class="grid"></div>
 
     <script>
-        const API_KEY = "576426pIhliaz78wwydsib";
-        const DOOD_URL = `https://doodapi.com/api/file/list?key=${API_KEY}`;
-        // Using codetabs CORS proxy to bypass browser restrictions
-        const PROXY_URL = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(DOOD_URL)}`;
+        const API_KEY = "576426plhliaz78wwydsib";
+        const DOOD_URL = `https://doodapi.co/api/file/list?key=${API_KEY}`;
+        const PROXY_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(DOOD_URL)}`;
 
         async function fetchVideos() {
             const statusDiv = document.getElementById("status");
@@ -33,7 +32,8 @@
 
             try {
                 const response = await fetch(PROXY_URL);
-                const data = await response.json();
+                const proxyData = await response.json();
+                const data = JSON.parse(proxyData.contents);
 
                 if (data.status === 200 && data.result && data.result.files && data.result.files.length > 0) {
                     statusDiv.style.display = "none";
@@ -51,14 +51,14 @@
                         `;
                         gridDiv.appendChild(card);
                     });
-                } else if (data.status === 200 && data.result.files.length === 0) {
-                    statusDiv.innerText = "No videos uploaded yet in your Doodstream account.";
+                } else if (data.status === 200 && data.result && data.result.files.length === 0) {
+                    statusDiv.innerText = "Account active! No videos uploaded yet in your Doodstream account.";
                 } else {
-                    statusDiv.innerText = "API Response Error: " + (data.msg || "Check API Key or limits");
+                    statusDiv.innerText = "API Response: " + (data.msg || "Error fetching data");
                 }
             } catch (error) {
                 console.error("Fetch error:", error);
-                statusDiv.innerText = "Error connecting to server. Please ensure you have uploaded at least 1 video on Doodstream.";
+                statusDiv.innerText = "Connection error. Retrying...";
             }
         }
 
@@ -66,4 +66,5 @@
     </script>
 </body>
 </html>
+
 
