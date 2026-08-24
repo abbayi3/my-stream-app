@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,23 +37,27 @@ header{ height:65px; display:flex; align-items:center; justify-content:space-bet
 .badge { background: #191c26; border: 1px solid #272b3c; color: #c2c7d6; font-size: 11px; font-weight: 600; padding: 6px 14px; border-radius: 16px; white-space: nowrap; cursor: pointer; transition: 0.2s; }
 .badge.active, .badge:hover { background: #e50914; border-color: #e50914; color: #fff; }
 .section{ padding:15px 14px; }
-.section-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
-.title{ font-size:18px; text-transform:capitalize; font-weight:bold; }
+.section-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.title{ font-size:16px; text-transform:capitalize; font-weight:bold; }
 .see-more-btn{ color:#e50914; font-size:20px; font-weight:bold; cursor:pointer; user-select:none; }
-.row{ display:flex; gap:13px; overflow-x:auto; scrollbar-width:none; }
+.row{ display:flex; gap:12px; overflow-x:auto; scrollbar-width:none; padding-bottom: 5px; }
 .row::-webkit-scrollbar{ display:none; }
-.movie{ width:150px; min-width:150px; cursor:pointer; background: #13151c; border: 1px solid #1f222e; border-radius: 8px; overflow: hidden; }
-.poster{ width:100%; height:100px; object-fit:cover; background:#191c26; display: block; }
-.movieName{ padding: 8px; font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:600; color: #e1e4ed; }
-.movieMeta{ padding: 0 8px 8px 8px; color:#78838e; font-size:10px; text-transform:capitalize; }
+
+/* Free title styles - no background box */
+.movie{ width:150px; min-width:150px; cursor:pointer; background: transparent; border: none; flex-shrink: 0; }
+.poster{ width:100%; height:95px; object-fit:cover; background:#191c26; display: block; border-radius: 8px; }
+.movieName{ padding: 6px 2px 2px 2px; font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:600; color: #e1e4ed; }
+.movieMeta{ padding: 0 2px 6px 2px; color:#78838e; font-size:9px; text-transform:capitalize; }
+
 .modal, .admin, .category-page{ position:fixed; inset:0; display:none; background:rgba(0,0,0,.92); z-index:100; }
 .category-page{ background:#0d0e12; z-index:90; overflow-y:auto; }
 .category-header{ height:65px; display:flex; align-items:center; gap:15px; padding:0 15px; background:#13151c; border-bottom:1px solid #1f222e; position:sticky; top:0; z-index:10; }
 .back-btn{ background:none; border:none; color:white; font-size:22px; cursor:pointer; }
 .category-title-head{ font-size:18px; font-weight:bold; text-transform:capitalize; }
-.grid-container{ display:grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap:12px; padding:15px; }
-.grid-movie{ cursor:pointer; width:100%; background: #13151c; border: 1px solid #1f222e; border-radius: 8px; overflow: hidden; }
-.grid-poster{ width:100%; height:100px; object-fit:cover; background:#191c26; }
+.grid-container{ display:grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap:12px; padding:15px; }
+.grid-movie{ cursor:pointer; width:100%; background: transparent; border: none; }
+.grid-poster{ width:100%; height:95px; object-fit:cover; background:#191c26; display:block; border-radius: 8px; }
+
 .modal{ align-items:center; justify-content:center; padding:12px; }
 .modalBox{ width:100%; max-width:600px; background:#13151c; border-radius:12px; overflow:hidden; position:relative; max-height:92vh; overflow-y:auto; border:1px solid #272b3c; }
 .modalMediaContainer{ width:100%; aspect-ratio: 16/9; background:#000; position:relative; }
@@ -76,11 +79,10 @@ header{ height:65px; display:flex; align-items:center; justify-content:space-bet
 .adminContent{ max-width:600px; margin:auto; padding:20px; }
 .group{ margin-bottom:15px; }
 .group label{ display:block; color:#a0a6b8; font-size:12px; margin-bottom:6px; }
-.group input, .group textarea{ width:100%; padding:10px; background:#191c26; color:white; border:1px solid #272b3c; border-radius:8px; outline:none; font-size:12px; }
+.group input{ width:100%; padding:10px; background:#191c26; color:white; border:1px solid #272b3c; border-radius:8px; outline:none; font-size:12px; }
 .preview{ width:100px; height:60px; object-fit:cover; border-radius:6px; margin-top:8px; display:none; }
 .addBtn{ width:100%; padding:12px; border:0; border-radius:8px; background:#e50914; color:white; font-weight:bold; cursor:pointer; margin-top:5px; font-size:13px; }
 .cancelBtn{ background:#525868; width:100%; padding:10px; border:0; border-radius:8px; color:white; font-weight:bold; cursor:pointer; margin-top:5px; display:none; font-size:12px; }
-.status{ margin-top:12px; padding:10px; background:#191c26; border-radius:7px; color:#a0a6b8; font-size:12px; }
 .admin-card-section{ background:#13151c; border-radius:10px; border:1px solid #1f222e; margin-bottom:15px; overflow:hidden; }
 .accordion-header{ display:flex; justify-content:space-between; align-items:center; padding:15px; cursor:pointer; user-select:none; }
 .accordion-header h3{ font-size:15px; margin:0; }
@@ -90,7 +92,8 @@ header{ height:65px; display:flex; align-items:center; justify-content:space-bet
 .adminThumb{ width:60px; height:35px; object-fit:cover; border-radius:4px; }
 .adminInfo{ flex:1; font-size:12px; }
 .adminBtns{ display:flex; gap:6px; }
-.delete{ background:#e50914; color:white; border:0; padding:6px 10px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:11px; }
+.editBtn{ background:#f39c12; color:white; border:0; padding:6px 10px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:11px; }
+.deleteBtn{ background:#e50914; color:white; border:0; padding:6px 10px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:11px; }
 footer{ text-align:center; color:#525868; padding:30px; font-size:11px; }
 </style>
 </head>
@@ -119,7 +122,7 @@ footer{ text-align:center; color:#525868; padding:30px; font-size:11px; }
       <button onclick="openAdminSecretly()"><i class="fa-solid fa-gear"></i> Admin Panel</button>
     </div>
   </div>
-  <div style="font-size:11px; color:#525868; text-align:center; padding-top:20px;">StreamHub v2.1</div>
+  <div style="font-size:11px; color:#525868; text-align:center; padding-top:20px;">StreamHub v2.5</div>
 </div>
 
 <div class="section" style="padding-bottom: 5px;">
@@ -175,15 +178,17 @@ footer{ text-align:center; color:#525868; padding:30px; font-size:11px; }
 <div id="adminPanel" class="admin">
   <div class="adminHeader">
     <h2>⚙️ Admin Panel</h2>
-    <button class="delete" style="background:#272b3c;" onclick="closeAdmin()">✕ Close</button>
+    <button class="deleteBtn" style="background:#272b3c;" onclick="closeAdmin()">✕ Close</button>
   </div>
   <div class="adminContent">
+    
     <div class="admin-card-section">
       <div class="accordion-header" onclick="toggleAccordion('secMovie', 'iconMovie')">
-        <h3 style="color:#e50914;">🎬 Add Video Entry</h3>
+        <h3 id="videoFormTitle" style="color:#e50914;">🎬 Add Video Entry</h3>
         <span id="iconMovie" class="accordion-icon">▼</span>
       </div>
       <div id="secMovie" class="accordion-body">
+        <input type="hidden" id="editMovieId">
         <div class="group"><label>Video Title</label><input id="movieTitle" placeholder="Title"></div>
         <div class="group"><label>StreamTape Link / Embed Code / ID</label><input id="movieLink" placeholder="Paste link or ID here..."></div>
         <div class="group"><label>Category Name</label><input id="movieCategory" placeholder="e.g. Naughty America, Anal..."></div>
@@ -192,23 +197,26 @@ footer{ text-align:center; color:#525868; padding:30px; font-size:11px; }
           <input id="movieImage" type="file" accept="image/*">
           <img id="preview" class="preview">
         </div>
-        <button class="addBtn" onclick="addOrUpdateMovie()">Save Video</button>
+        <button id="videoSubmitBtn" class="addBtn" onclick="saveMovie()">Save Video</button>
+        <button id="videoCancelBtn" class="cancelBtn" onclick="resetVideoForm()">Cancel Edit</button>
       </div>
     </div>
 
     <div class="admin-card-section">
       <div class="accordion-header" onclick="toggleAccordion('secActor', 'iconActor')">
-        <h3 style="color:#e50914;">👤 Add Actor / Performer</h3>
+        <h3 id="actorFormTitle" style="color:#e50914;">👤 Add Actor / Performer</h3>
         <span id="iconActor" class="accordion-icon">▼</span>
       </div>
       <div id="secActor" class="accordion-body">
+        <input type="hidden" id="editActorId">
         <div class="group"><label>Actor Name</label><input id="actorName" placeholder="Performer name"></div>
         <div class="group">
           <label>Actor Photo</label>
           <input id="actorImage" type="file" accept="image/*">
           <img id="actorPreview" class="preview">
         </div>
-        <button class="addBtn" onclick="saveActor()">Save Actor</button>
+        <button id="actorSubmitBtn" class="addBtn" onclick="saveActor()">Save Actor</button>
+        <button id="actorCancelBtn" class="cancelBtn" onclick="resetActorForm()">Cancel Edit</button>
       </div>
     </div>
 
@@ -221,6 +229,17 @@ footer{ text-align:center; color:#525868; padding:30px; font-size:11px; }
         <div id="adminMovies"></div>
       </div>
     </div>
+
+    <div class="admin-card-section" style="margin-top:15px;">
+      <div class="accordion-header" onclick="toggleAccordion('secActorsList', 'iconActorsList')">
+        <h3>👥 Performers List</h3>
+        <span id="iconActorsList" class="accordion-icon">▼</span>
+      </div>
+      <div id="secActorsList" class="accordion-body">
+        <div id="adminActors"></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -234,11 +253,9 @@ let performers = JSON.parse(localStorage.getItem('actors_list') || '[]');
 let selectedMovie = null;
 let watchlist = [];
 
-// Instantly render cached data so page loads without delay
 renderPerformers();
 renderMovies();
 
-// Then fetch fresh data from Supabase in background
 async function fetchFreshData(){
   try {
     const res = await db.from("videos").select("*").order("id", {ascending:false});
@@ -406,9 +423,11 @@ function openFilteredPage(catValue){
     const card = document.createElement("div");
     card.className = "grid-movie";
     card.onclick = function(){ openMovie(movie); };
+    const imgUrl = movie.poster_url || movie.thumbnail_url || "";
     card.innerHTML = `
-      <img class="grid-poster" src="${movie.poster_url || movie.thumbnail_url}" loading="lazy">
+      <img class="grid-poster" src="${imgUrl}" loading="lazy">
       <div class="movieName">${escapeHTML(movie.title)}</div>
+      <div class="movieMeta">HD Quality</div>
     `;
     grid.appendChild(card);
   });
@@ -425,8 +444,9 @@ function createCard(movie){
   card.className = "movie";
   card.onclick = function(){ openMovie(movie); };
 
+  const imgUrl = movie.poster_url || movie.thumbnail_url || "";
   card.innerHTML = `
-    <img class="poster" src="${movie.poster_url || movie.thumbnail_url}" loading="lazy">
+    <img class="poster" src="${imgUrl}" loading="lazy">
     <div class="movieName">${escapeHTML(movie.title)}</div>
     <div class="movieMeta">HD Quality</div>
   `;
@@ -437,7 +457,8 @@ function escapeHTML(text){
   return String(text||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 
-async function addOrUpdateMovie(){
+async function saveMovie(){
+  const editId = document.getElementById("editMovieId").value;
   const title = document.getElementById("movieTitle").value.trim();
   const codeInput = document.getElementById("movieLink").value.trim();
   const category = document.getElementById("movieCategory").value.trim() || "general";
@@ -446,7 +467,8 @@ async function addOrUpdateMovie(){
   if(!title || !codeInput) return alert("Title and Code/Link required!");
 
   const fileCode = parseStreamtapeId(codeInput);
-  let posterUrl = "";
+  let posterUrl = document.getElementById("preview").src;
+  if(!posterUrl || posterUrl === window.location.href) posterUrl = "";
 
   if(file){
     const reader = new FileReader();
@@ -456,30 +478,72 @@ async function addOrUpdateMovie(){
     });
   }
 
-  const newObj = { id: Date.now(), title, file_code: fileCode, poster_url: posterUrl, category };
-  movies.unshift(newObj);
-  localStorage.setItem('offline_videos', JSON.stringify(movies));
-  
-  try {
-    await db.from("videos").insert([{ title, file_code: fileCode, poster_url: posterUrl, category }]);
-  } catch(e){}
+  if(editId) {
+    const index = movies.findIndex(m => m.id == editId);
+    if(index !== -1) {
+      movies[index] = { ...movies[index], title, file_code: fileCode, category, poster_url: posterUrl || movies[index].poster_url || movies[index].thumbnail_url };
+    }
+    try {
+      await db.from("videos").update({ title, file_code: fileCode, category, poster_url: posterUrl }).eq("id", editId);
+    } catch(e){}
+    alert("✅ Video Updated!");
+  } else {
+    const newObj = { id: Date.now(), title, file_code: fileCode, poster_url: posterUrl, category };
+    movies.unshift(newObj);
+    try {
+      await db.from("videos").insert([{ title, file_code: fileCode, poster_url: posterUrl, category }]);
+    } catch(e){}
+    alert("✅ Video Added!");
+  }
 
+  localStorage.setItem('offline_videos', JSON.stringify(movies));
+  resetVideoForm();
+  renderMovies();
+}
+
+function editMovie(id) {
+  const m = movies.find(item => item.id == id);
+  if(!m) return;
+  document.getElementById("editMovieId").value = m.id;
+  document.getElementById("movieTitle").value = m.title;
+  document.getElementById("movieLink").value = m.file_code;
+  document.getElementById("movieCategory").value = m.category || "";
+  
+  const preview = document.getElementById("preview");
+  const imgUrl = m.poster_url || m.thumbnail_url;
+  if(imgUrl) {
+    preview.src = imgUrl;
+    preview.style.display = "block";
+  }
+
+  document.getElementById("videoFormTitle").textContent = "✏️ Edit Video Entry";
+  document.getElementById("videoSubmitBtn").textContent = "Update Video";
+  document.getElementById("videoCancelBtn").style.display = "block";
+  document.getElementById("secMovie").style.display = "block";
+  document.getElementById("iconMovie").textContent = "▲";
+}
+
+function resetVideoForm() {
+  document.getElementById("editMovieId").value = "";
   document.getElementById("movieTitle").value = "";
   document.getElementById("movieLink").value = "";
   document.getElementById("movieCategory").value = "";
   document.getElementById("movieImage").value = "";
   document.getElementById("preview").style.display = "none";
-  
-  renderMovies();
-  alert("✅ Video Added!");
+  document.getElementById("videoFormTitle").textContent = "🎬 Add Video Entry";
+  document.getElementById("videoSubmitBtn").textContent = "Save Video";
+  document.getElementById("videoCancelBtn").style.display = "none";
 }
 
 async function saveActor(){
+  const editId = document.getElementById("editActorId").value;
   const name = document.getElementById("actorName").value.trim();
   const file = document.getElementById("actorImage").files[0];
   if(!name) return alert("Actor name required!");
 
-  let imageUrl = "";
+  let imageUrl = document.getElementById("actorPreview").src;
+  if(!imageUrl || imageUrl === window.location.href) imageUrl = "";
+
   if(file){
     const reader = new FileReader();
     imageUrl = await new Promise(resolve => {
@@ -488,17 +552,57 @@ async function saveActor(){
     });
   }
 
-  performers.unshift({ id: Date.now(), name, image_url: imageUrl });
-  localStorage.setItem('actors_list', JSON.stringify(performers));
-  try {
-    await db.from("performers").insert([{ name, image_url: imageUrl }]);
-  } catch(e){}
+  if(editId) {
+    const index = performers.findIndex(p => p.id == editId);
+    if(index !== -1) {
+      performers[index] = { ...performers[index], name, image_url: imageUrl || performers[index].image_url };
+    }
+    try {
+      await db.from("performers").update({ name, image_url: imageUrl }).eq("id", editId);
+    } catch(e){}
+    alert("✅ Actor Updated!");
+  } else {
+    const newActor = { id: Date.now(), name, image_url: imageUrl };
+    performers.unshift(newActor);
+    try {
+      await db.from("performers").insert([{ name, image_url: imageUrl }]);
+    } catch(e){}
+    alert("✅ Actor Added!");
+  }
 
+  localStorage.setItem('actors_list', JSON.stringify(performers));
+  resetActorForm();
+  renderPerformers();
+  renderAdmin();
+}
+
+function editActor(id) {
+  const p = performers.find(item => item.id == id);
+  if(!p) return;
+  document.getElementById("editActorId").value = p.id;
+  document.getElementById("actorName").value = p.name;
+  
+  const preview = document.getElementById("actorPreview");
+  if(p.image_url) {
+    preview.src = p.image_url;
+    preview.style.display = "block";
+  }
+
+  document.getElementById("actorFormTitle").textContent = "✏️ Edit Actor / Performer";
+  document.getElementById("actorSubmitBtn").textContent = "Update Actor";
+  document.getElementById("actorCancelBtn").style.display = "block";
+  document.getElementById("secActor").style.display = "block";
+  document.getElementById("iconActor").textContent = "▲";
+}
+
+function resetActorForm() {
+  document.getElementById("editActorId").value = "";
   document.getElementById("actorName").value = "";
   document.getElementById("actorImage").value = "";
   document.getElementById("actorPreview").style.display = "none";
-  renderPerformers();
-  alert("✅ Actor Added!");
+  document.getElementById("actorFormTitle").textContent = "👤 Add Actor / Performer";
+  document.getElementById("actorSubmitBtn").textContent = "Save Actor";
+  document.getElementById("actorCancelBtn").style.display = "none";
 }
 
 function renderAdmin(){
@@ -507,26 +611,55 @@ function renderAdmin(){
   movies.forEach(item => {
     const div = document.createElement("div");
     div.className = "adminItem";
+    const imgUrl = item.poster_url || item.thumbnail_url || "";
     div.innerHTML = `
-      <img class="adminThumb" src="${item.poster_url || item.thumbnail_url}">
+      <img class="adminThumb" src="${imgUrl}">
       <div class="adminInfo">
         <strong>${escapeHTML(item.title)}</strong><br>
         <small style="color:#a0a6b8;">${escapeHTML(item.category || 'general')}</small>
       </div>
       <div class="adminBtns">
-        <button class="delete" onclick="deleteItem(${item.id})">Delete</button>
+        <button class="editBtn" onclick="editMovie(${item.id})">Edit</button>
+        <button class="deleteBtn" onclick="deleteMovie(${item.id})">Delete</button>
       </div>
     `;
     box.appendChild(div);
   });
+
+  const actorBox = document.getElementById("adminActors");
+  actorBox.innerHTML = "";
+  performers.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "adminItem";
+    div.innerHTML = `
+      <img class="adminThumb" src="${item.image_url || ''}" style="border-radius:50%; width:35px; height:35px;">
+      <div class="adminInfo">
+        <strong>${escapeHTML(item.name)}</strong>
+      </div>
+      <div class="adminBtns">
+        <button class="editBtn" onclick="editActor(${item.id})">Edit</button>
+        <button class="deleteBtn" onclick="deleteActor(${item.id})">Delete</button>
+      </div>
+    `;
+    actorBox.appendChild(div);
+  });
 }
 
-async function deleteItem(id){
+async function deleteMovie(id){
   if(!confirm("Delete video?")) return;
   await db.from("videos").delete().eq("id", id);
   movies = movies.filter(m => m.id !== id);
   localStorage.setItem('offline_videos', JSON.stringify(movies));
   renderMovies();
+}
+
+async function deleteActor(id){
+  if(!confirm("Delete performer?")) return;
+  await db.from("performers").delete().eq("id", id);
+  performers = performers.filter(p => p.id !== id);
+  localStorage.setItem('actors_list', JSON.stringify(performers));
+  renderPerformers();
+  renderAdmin();
 }
 
 function openMovie(movie){
@@ -538,7 +671,7 @@ function openMovie(movie){
   iframeElement.style.display = "none";
   iframeElement.src = "";
   imgElement.style.display = "block";
-  imgElement.src = movie.poster_url || movie.thumbnail_url;
+  imgElement.src = movie.poster_url || movie.thumbnail_url || "";
 
   updateWatchlistBtn();
   document.getElementById("movieModal").style.display = "flex";
@@ -635,6 +768,14 @@ document.getElementById("search").addEventListener("input", function(){
   }
 });
 
+document.getElementById("search").addEventListener("keypress", function(e){
+  if(e.key === "Enter") {
+    const q = this.value.trim();
+    if(q) openFilteredPage(q);
+    document.getElementById("suggestions").style.display = "none";
+  }
+});
+
 document.addEventListener("click", function(e){
   if(!e.target.closest(".search-container")){
     document.getElementById("suggestions").style.display = "none";
@@ -643,7 +784,4 @@ document.addEventListener("click", function(e){
 </script>
 </body>
 </html>
-
-
-
 
